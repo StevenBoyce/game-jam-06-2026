@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="game-jam-06-26"
+run/main_scene="uid://wrbxsk8qadf0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*uid://d1l5aomxcihja"
 
 [physics]
 
@@ -20,4 +25,5 @@ config/icon="res://icon.svg"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
