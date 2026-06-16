@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://dyl5lrmc8uq2y"]
+[gd_scene load_steps=3 format=3 uid="uid://dyl5lrmc8uq2y"]
 
 [ext_resource type="Texture2D" uid="uid://dkp7iea5ndtow" path="res://assets/48x48 trees.png" id="1_3tpkh"]
-[ext_resource type="Script" uid="uid://boei7p2vq2bi0" path="res://scenes/tree/PlayerTree.gd" id="1_x6y3p"]
+[ext_resource type="Script" uid="uid://cxkyht861ej0y" path="res://scenes/tree/player_tree.gd" id="1_x6y3p"]
 
-[node name="PlayerTree" type="Node2D" unique_id=1691204110]
+[node name="PlayerTree" type="Node2D"]
 script = ExtResource("1_x6y3p")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=929526706]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_3tpkh")
 hframes = 4
 metadata/_edit_lock_ = true
 
-[node name="AttackHitbox" type="Area2D" parent="." unique_id=1011411476]
+[node name="AttackHitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=855190076]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
