@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://yx3hv4ptul6f" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="PackedScene" uid="uid://dyl5lrmc8uq2y" path="res://scenes/tree/PlayerTree.tscn" id="2_xd4uy"]
 
-[node name="Main" type="Node2D" unique_id=2090432355]
+[node name="Battle" type="Node2D" unique_id=2090432355]
 script = ExtResource("1_xd4uy")
 metadata/_edit_vertical_guides_ = [1172.0]
 
