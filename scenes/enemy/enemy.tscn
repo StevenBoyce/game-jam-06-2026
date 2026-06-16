@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://70rb8urhpjlr"]
 
-[ext_resource type="Script" uid="uid://c8xgl6ggvtisn" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
+[ext_resource type="Script" uid="uid://b6a02r8ich0fr" path="res://scenes/enemy/Enemy.gd" id="1_sjakr"]
 
-[node name="Enemy" type="Node2D" unique_id=627156245]
-script = ExtResource("1_4a83h")
+[node name="Enemy" type="CharacterBody2D" unique_id=1266604145]
+script = ExtResource("1_sjakr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1918932196]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702957718]
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=136008010]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=879894565]
+
+[node name="AggroZone" type="Area2D" parent="." unique_id=1032395503]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroZone" unique_id=1178310481]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1757295260]

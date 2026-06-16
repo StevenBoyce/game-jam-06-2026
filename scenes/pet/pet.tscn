@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://c3q6wlvdb0l7n"]
 
-[ext_resource type="Script" uid="uid://b5d7l7108t3oe" path="res://scenes/pet/pet.gd" id="1_cn888"]
+[ext_resource type="Script" uid="uid://b5d7l7108t3oe" path="res://scenes/pet/Pet.gd" id="1_cn888"]
 
-[node name="Pet" type="Node2D" unique_id=1686981548]
+[node name="Pet" type="CharacterBody2D" unique_id=1355533560]
 script = ExtResource("1_cn888")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2050045247]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1867012181]
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=688610933]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1046200013]
+
+[node name="AggroZone" type="Area2D" parent="." unique_id=1329483931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroZone" unique_id=210342922]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1219158353]
