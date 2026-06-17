@@ -27,7 +27,8 @@ func _process(delta: float) -> void:
  
 	var distance = global_position.distance_to(current_target.global_position)
 	if distance > attack_range:
-		move_toward_target(delta)
+		move()
+		# move_toward_target(delta)
 	else:
 		try_attack(current_target)
  
