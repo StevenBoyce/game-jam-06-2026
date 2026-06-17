@@ -6,11 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40wdo"]
 size = Vector2(62, 78)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
-size = Vector2(29, 60)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
-
 [node name="Enemy" type="CharacterBody2D" unique_id=1266604145]
 script = ExtResource("1_sjakr")
 
@@ -20,16 +15,5 @@ texture = ExtResource("2_a3pup")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702957718]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_40wdo")
-
-[node name="AttackHitbox" type="Area2D" parent="." unique_id=136008010]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=879894565]
-position = Vector2(-6, -5)
-shape = SubResource("RectangleShape2D_a3pup")
-
-[node name="AggroZone" type="Area2D" parent="." unique_id=1032395503]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroZone" unique_id=1178310481]
-shape = SubResource("RectangleShape2D_tjssy")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1757295260]

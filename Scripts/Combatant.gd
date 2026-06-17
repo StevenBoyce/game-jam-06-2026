@@ -20,6 +20,21 @@ func _ready() -> void:
 	health = max_health
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+
+func add_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+func move():
+	if current_target == null or not is_instance_valid(current_target):
+		return
+	var direction = (current_target.global_position - global_position).normalized()
+	velocity = move_speed * direction
+
+func _physics_process(delta: float) -> void:
+	add_gravity(delta)
+	move()
+	move_and_slide()
 	
 func take_damage(amount: float) -> void:
 	health -= amount
@@ -41,8 +56,8 @@ func try_attack(target: Node2D) -> void:
 		can_attack = false
 		attack_timer.start()
  
-func move_toward_target(delta: float) -> void:
-	if current_target == null or not is_instance_valid(current_target):
-		return
-	var direction = (current_target.global_position - global_position).normalized()
-	position += direction * move_speed * delta
+# func move_toward_target(delta: float) -> void:
+# 	if current_target == null or not is_instance_valid(current_target):
+# 		return
+# 	var direction = (current_target.global_position - global_position).normalized()
+# 	position += direction * move_speed * delta
