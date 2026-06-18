@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="1_ffvsa"]
 [ext_resource type="Script" uid="uid://yx3hv4ptul6f" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="PackedScene" uid="uid://dyl5lrmc8uq2y" path="res://scenes/tree/PlayerTree.tscn" id="2_xd4uy"]
+[ext_resource type="Script" uid="uid://b77ph4qqwhky0" path="res://Scripts/Spawner.gd" id="4_0yh6x"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xd4uy"]
 a = Vector2(1360, 646)
@@ -43,6 +44,7 @@ position = Vector2(575, 524)
 [node name="Enemies" type="Node" parent="World" unique_id=1168521261]
 
 [node name="Spawner" type="Node" parent="." unique_id=2013294228]
+script = ExtResource("4_0yh6x")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner" unique_id=245558521]
 unique_name_in_owner = true
