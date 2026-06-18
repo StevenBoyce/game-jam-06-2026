@@ -6,8 +6,9 @@ func _ready():
 	var tree_node = Node2D.new()
 	add_child(tree_node)
 
-	tree_node.position = Vector2(-100, -200)
-	tree_node.scale = Vector2(0.4, 0.4)
+
+	tree_node.position = Vector2(-500, -200)
+	tree_node.scale = Vector2(0.7, 0.7)
 	
 	var tree = createpoints()
 	var width = get_viewport().get_visible_rect().size.x
@@ -43,11 +44,17 @@ func _ready():
 
 	for branch in tree:
 		var layer = int(floor(log(branch_index + 1) / log(2)))
+			
 
 		var start_scale = pow(taper_factor, layer)
 		var end_scale = pow(taper_factor, layer + 1)
 
 		var line = Line2D.new()
+		
+		
+		line.z_index = layer
+		
+		
 		line.width = base_width
 		line.default_color = Color.BLACK
 
@@ -70,18 +77,28 @@ func _ready():
 
 		tree_node.add_child(line)
 		if branch_index > 6:
-			var circle = Polygon2D.new()
+			for j in range(6):
+				var circle = Polygon2D.new()
+				circle.z_index = layer + 1
 
-			var points = PackedVector2Array()
-			for i in range(16):
-				var angle = TAU * i / 16.0
-				points.append(Vector2(cos(angle), sin(angle)) * 10.0)
+				var points = PackedVector2Array()
+				var rand_size = randf_range(2.0, 7.0)
 
-			circle.polygon = points
-			circle.color = Color.ORANGE
-			circle.position = Vector2(scaled_width1, scaled_height1)
+				for i in range(16):
+					var angle = TAU * i / 16.0
+					points.append(Vector2(cos(angle), sin(angle)) * rand_size)
 
-			tree_node.add_child(circle)
+				var rand_locationx = randf_range(-20.0, 20.0)
+				var rand_locationy = randf_range(-20.0, 20.0)
+
+				circle.polygon = points
+				circle.color = Color.ORANGE
+				circle.position = Vector2(
+					scaled_width1 + rand_locationx,
+					scaled_height1 + rand_locationy
+				)
+
+				tree_node.add_child(circle)
 		branch_index += 1
 
 	
@@ -117,7 +134,7 @@ func createpoints():
 		var arr2 = []
 		arr2.resize(5)
 
-		var rand_angle = deg_to_rad(randi_range(-30, 0))
+		var rand_angle = deg_to_rad(randi_range(-20, 0))
 		var rand_length = randf_range(0.1, 0.2)
 		var new_angle = old_angle + rand_angle
 
@@ -137,7 +154,7 @@ func createpoints():
 		var arr3 = []
 		arr3.resize(5)
 
-		var rand_angle2 = deg_to_rad(randi_range(0, 30))
+		var rand_angle2 = deg_to_rad(randi_range(0, 20))
 		var rand_length2 = randf_range(0.1, 0.2)
 		var new_angle2 = old_angle + rand_angle2
 
