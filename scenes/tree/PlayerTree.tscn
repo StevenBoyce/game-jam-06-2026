@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://dyl5lrmc8uq2y"]
 
 [ext_resource type="Texture2D" uid="uid://dkp7iea5ndtow" path="res://assets/48x48 trees.png" id="1_3tpkh"]
-[ext_resource type="Script" uid="uid://boei7p2vq2bi0" path="res://scenes/tree/PlayerTree.gd" id="1_x6y3p"]
 
 [node name="PlayerTree" type="Node2D" unique_id=1691204110]
-script = ExtResource("1_x6y3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=929526706]
 scale = Vector2(5, 5)

@@ -16,7 +16,7 @@ const WAVE_DATA: Array[Dictionary] = [
 ]
 @onready var spawn_timer: Timer = $SpawnTimer
 
-@onready var enemies_container: Node2D = get_parent().get_node("World/Enemies") as Node2D
+@onready var enemies_container: Node2D = get_parent().get_node("World/Enemies")
 
 var current_wave: int = 0
 var enemies_remaining: int = 0

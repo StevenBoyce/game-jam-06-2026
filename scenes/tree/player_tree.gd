@@ -1,3 +1,4 @@
+class_name PlayerTree
 extends Node2D
 
 
@@ -6,8 +7,6 @@ func _ready():
 	var tree_node = Node2D.new()
 	add_child(tree_node)
 
-
-	tree_node.position = Vector2(-500, -200)
 	tree_node.scale = Vector2(0.7, 0.7)
 	
 	var tree = createpoints()
