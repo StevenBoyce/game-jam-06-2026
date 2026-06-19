@@ -92,7 +92,7 @@ func _ready():
 				var rand_locationy = randf_range(-20.0, 20.0)
 
 				circle.polygon = points
-				circle.color = Color.ORANGE
+				circle.color = Color.BLUE
 				circle.position = Vector2(
 					scaled_width1 + rand_locationx,
 					scaled_height1 + rand_locationy
@@ -122,7 +122,7 @@ func createpoints():
 	var tree = []
 	tree.resize(1)
 	tree[0] = arr
-	var layers = 8
+	var layers = 10
 	var branches = pow(2, layers- 1) - 2
 	var i = 0
 	while i < branches:
