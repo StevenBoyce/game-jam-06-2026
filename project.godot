@@ -11,13 +11,23 @@ config_version=5
 [application]
 
 config/name="game-jam-06-26"
-run/main_scene="uid://d3vie4nxqpowu"
+run/main_scene="uid://khe5md6lwp10"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*uid://d1l5aomxcihja"
+GameState="*uid://dj4mwxhcbpmd3"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [physics]
 

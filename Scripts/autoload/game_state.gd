@@ -136,6 +136,7 @@ func _apply_mission_reward(mission: MutationMission) -> bool:
 				bonus_pet_gained = add_pet(generate_random_pet())
 	return bonus_pet_gained
 
+# call this when purchasing mutations with mana
 func graft_mutation(mutation: TreeMutation) -> bool:
 	if not unlocked_mutations.has(mutation):
 		push_warning("Mutation '%s' is not unlocked yet." % mutation.title)
