@@ -20,11 +20,6 @@ config/icon="res://icon.svg"
 Events="*uid://d1l5aomxcihja"
 GameState="*uid://dj4mwxhcbpmd3"
 
-[display]
-
-window/size/viewport_width=960
-window/size/viewport_height=540
-
 [editor]
 
 version_control/autoload_on_startup=true
