@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b8clkw006nu8i"]
+
+[ext_resource type="Script" uid="uid://b0mhd5vjy16q6" path="res://scenes/ui/fade/fade.gd" id="1_1yey0"]
+
+[node name="Fade" type="CanvasLayer" unique_id=816748496]
+script = ExtResource("1_1yey0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1130568319]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

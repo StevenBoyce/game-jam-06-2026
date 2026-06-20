@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bik4uukqpvvyo"]
+
+[ext_resource type="Script" uid="uid://dbcjc5t0qjl2l" path="res://scenes/main/main.gd" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://b8clkw006nu8i" path="res://scenes/ui/fade/fade.tscn" id="2_iuonh"]
+
+[node name="Main" type="Node2D" unique_id=1891927498]
+script = ExtResource("1_hyk8p")
+
+[node name="Fade" parent="." unique_id=816748496 instance=ExtResource("2_iuonh")]
+unique_name_in_owner = true
