@@ -34,6 +34,10 @@ func _ready() -> void:
 
 		fill.bg_color = Color.WHITE
 		background.bg_color = Color.RED
+	
+	add_pet(Pet.new("Steve", "Turtle", 100.0))
+	add_pet(Pet.new("Karen", "Wolf", 100.0))
+	Events.pets_changed.emit()
 
 func _process(delta: float) -> void:
 	if is_instance_valid(mana_bar):
@@ -44,7 +48,7 @@ func _process(delta: float) -> void:
 			pet.heal(pet_healing_rate * delta)
 			changed = true
 	if changed:
-		pets_changed.emit()
+		Events.pets_changed.emit()
 
 func add_mana(amount: int) -> void:
 	mana = min(mana + amount, max_mana)
@@ -61,7 +65,7 @@ func add_pet(pet: Pet) -> bool:
 	if pets.size() >= pet_capacity:
 		return false
 	pets.append(pet)
-	pets_changed.emit()
+	Events.pets_changed.emit()
 	return true
 
 func generate_random_pet() -> Pet:
@@ -102,7 +106,7 @@ func start_mission(mission: MutationMission, selected_pets: Array[Pet]) -> Dicti
 		pet.take_damage(loss)
 		pet.is_on_mission = false
 
-	pets_changed.emit()
+	Events.pets_changed.emit()
 	
 	var result := _resolve_mission(mission, success)
 	mission_completed.emit(mission, success)
@@ -134,7 +138,7 @@ func _apply_mission_reward(mission: MutationMission) -> bool:
 		MutationMission.RewardType.PET_HEALTH_PERCENT:
 			for pet in pets:
 				pet.max_health *= (1.0 + mission.reward_value / 100.0)
-			pets_changed.emit()
+			Events.pets_changed.emit()
 		MutationMission.RewardType.SUCCESS_RATE_BUFF:
 			success_buff_active = true
 		MutationMission.RewardType.PET_ACQUISITION_RATE:

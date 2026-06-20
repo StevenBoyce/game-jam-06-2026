@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
 [ext_resource type="Script" uid="uid://brglhdmbh8efe" path="res://scenes/ui/resource_bar/resource_bar.gd" id="3_d2op2"]
+[ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid.gd" id="5_8ywsm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yra6k"]
 
@@ -34,14 +35,58 @@ show_percentage = false
 script = ExtResource("3_d2op2")
 metadata/_custom_type_script = "uid://brglhdmbh8efe"
 
+[node name="RightSide" type="VBoxContainer" parent="CanvasLayer" unique_id=1578267630]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PetFoldableContainer" type="FoldableContainer" parent="CanvasLayer/RightSide" unique_id=319208573]
+layout_mode = 2
+title = "Pets"
+title_alignment = 1
+
+[node name="PetGrid" type="GridContainer" parent="CanvasLayer/RightSide/PetFoldableContainer" unique_id=574594756]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+script = ExtResource("5_8ywsm")
+
+[node name="Name" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1801454690]
+layout_mode = 2
+text = "Name"
+
+[node name="HP" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1380791179]
+layout_mode = 2
+text = "HP"
+
+[node name="Status" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1344690565]
+layout_mode = 2
+text = "Status"
+
+[node name="Label" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1336323620]
+layout_mode = 2
+text = "Steve"
+
+[node name="Label2" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1076545908]
+layout_mode = 2
+text = "100/100"
+
+[node name="Label3" type="Label" parent="CanvasLayer/RightSide/PetFoldableContainer/PetGrid" unique_id=1638166582]
+layout_mode = 2
+text = "Available"
+
 [node name="UI" type="Node2D" parent="CanvasLayer" unique_id=1462396979]
 position = Vector2(90, 255)
 
 [node name="Panel" type="Panel" parent="CanvasLayer/UI" unique_id=1286149277]
-offset_left = 478.0
-offset_top = -237.0
-offset_right = 850.0
-offset_bottom = -159.0
+offset_left = 363.0
+offset_top = -241.0
+offset_right = 735.0
+offset_bottom = -163.0
 
 [node name="Label" type="Label" parent="CanvasLayer/UI/Panel" unique_id=375235270]
 layout_mode = 0
