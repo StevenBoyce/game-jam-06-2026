@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://boei7p2vq2bi0" path="res://scenes/tree/player_tree.gd" id="3_0yh6x"]
 [ext_resource type="Texture2D" uid="uid://ba40thx838ocf" path="res://assets/foregrass2.png" id="3_h0kxc"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="4_0yh6x"]
-[ext_resource type="Texture2D" uid="uid://bsnw72nqcnsd" path="res://assets/clouds2.png" id="6_pll4o"]
+[ext_resource type="Texture2D" uid="uid://wesgw1i6ptke" path="res://assets/clouds3.png" id="5_pll4o"]
 [ext_resource type="Script" uid="uid://b2xii2e87jo4w" path="res://scenes/battle/sprite_2d.gd" id="7_py4tk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xd4uy"]
@@ -52,7 +52,7 @@ wait_time = 2.0
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=696655795]
 position = Vector2(992, 322)
 scale = Vector2(0.61302084, 0.60925925)
-texture = ExtResource("6_pll4o")
+texture = ExtResource("5_pll4o")
 script = ExtResource("7_py4tk")
 
 [node name="World" type="Node2D" parent="." unique_id=1189834188]
