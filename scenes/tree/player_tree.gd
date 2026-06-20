@@ -117,7 +117,7 @@ func _process(delta):
 func createpoints():
 	# Initialize the very first line segment  ( the trunk) of the tree
 	var arr = []
-	arr.resize(5)
+	arr.resize(6)
 	var start_x = float(0.5)
 	var start_y = float(1.0)
 	var end_x = float(0.5)
@@ -128,6 +128,7 @@ func createpoints():
 	arr[2] = end_x
 	arr[3] = end_y
 	arr[4] = angle
+	
 	
 	# InitiIalize the array of arrays that will store the line segments that makeup the tree.
 	var tree = []
