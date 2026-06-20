@@ -1,20 +1,14 @@
-class_name PlayerTree
 extends Node2D
-var tree_node: Node2D
-var wind_pivot: Node2D
-var t = 0.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	wind_pivot = Node2D.new()
-	add_child(wind_pivot)
+	var tree_node = Node2D.new()
+	add_child(tree_node)
 
-	tree_node = Node2D.new()
-	wind_pivot.add_child(tree_node)
-	
 
+	tree_node.position = Vector2(-500, -300)
 	tree_node.scale = Vector2(0.7, 0.7)
-	tree_node.position = Vector2(-100, -500)
 	
 	var tree = createpoints()
 	var width = get_viewport().get_visible_rect().size.x
@@ -98,7 +92,7 @@ func _ready():
 				var rand_locationy = randf_range(-20.0, 20.0)
 
 				circle.polygon = points
-				circle.color = Color.ORANGE
+				circle.color = Color.BLUE
 				circle.position = Vector2(
 					scaled_width1 + rand_locationx,
 					scaled_height1 + rand_locationy
@@ -106,13 +100,8 @@ func _ready():
 
 				tree_node.add_child(circle)
 		branch_index += 1
-	wind_pivot.position = Vector2(width * 0.5, height)
-	tree_node.position = -wind_pivot.position
 
-func _process(delta):
-	t += delta
-
-	wind_pivot.rotation = deg_to_rad(sin(t * 2.0) * 0.2)
+	
 	
 func createpoints():
 	# Initialize the very first line segment  ( the trunk) of the tree
@@ -133,7 +122,7 @@ func createpoints():
 	var tree = []
 	tree.resize(1)
 	tree[0] = arr
-	var layers = 6
+	var layers = 10
 	var branches = pow(2, layers- 1) - 2
 	var i = 0
 	while i < branches:
@@ -187,11 +176,8 @@ func createpoints():
 	return tree
 		
 		
-func create_branch():
-	null
 		
-	
-	
+		
 		
 		
 		
