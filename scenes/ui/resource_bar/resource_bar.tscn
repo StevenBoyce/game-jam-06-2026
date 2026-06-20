@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://qtes8bc5mafr"]
+
+[ext_resource type="Script" uid="uid://brglhdmbh8efe" path="res://scenes/ui/resource_bar/resource_bar.gd" id="1_1y0g1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2edg6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s50bh"]
+bg_color = Color(0.89795846, 0, 0.033776138, 1)
+
+[node name="ResourceBar" type="ProgressBar" unique_id=2047489266]
+offset_right = 152.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2edg6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s50bh")
+value = 50.0
+show_percentage = false
+script = ExtResource("1_1y0g1")

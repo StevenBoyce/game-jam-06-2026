@@ -14,6 +14,7 @@ enum RewardType {
 @export var title: String = ""
 @export_multiline var mutation_description: String = ""
 @export var pets_required: int = 1
+@export var pets: Array[Pet] = []
 @export var health_loss_min: float = 10.0
 @export var health_loss_max: float = 20.0
 @export var mana_reward: int = 50
@@ -21,6 +22,7 @@ enum RewardType {
 @export var reward_type: RewardType = RewardType.MAX_MANA
 @export var reward_value: float = 0.0
 @export var unlocks_mutation: TreeMutation = null
+@export var duration: float = 20.0
 
 func get_random_health_loss() -> float:
 	return randf_range(health_loss_min, health_loss_max)
