@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://i4qd5ktsvgk1"]
 
+[ext_resource type="Script" uid="uid://dj4mwxhcbpmd3" path="res://scenes/main_game/main_game.gd" id="1_yra6k"]
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
 [ext_resource type="Script" uid="uid://brglhdmbh8efe" path="res://scenes/ui/resource_bar/resource_bar.gd" id="3_d2op2"]
 
-[node name="Main" type="Node2D" unique_id=438888407]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yra6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ywsm"]
+
+[node name="MainGame" type="Node2D" unique_id=438888407]
+script = ExtResource("1_yra6k")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=767376372]
 position = Vector2(573.44446, 321.25003)
@@ -18,8 +24,13 @@ position = Vector2(49, 114)
 
 [node name="ManaBar" type="ProgressBar" parent="CanvasLayer" unique_id=1286475705]
 unique_name_in_owner = true
-offset_right = 4.0
+custom_minimum_size = Vector2(100, 20)
+offset_right = 100.0
 offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yra6k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ywsm")
+value = 50.0
+show_percentage = false
 script = ExtResource("3_d2op2")
 metadata/_custom_type_script = "uid://brglhdmbh8efe"
 

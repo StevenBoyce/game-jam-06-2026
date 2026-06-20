@@ -1,4 +1,7 @@
-extends Node
+class_name MainGame
+extends Node2D
+
+@onready var mana_bar: ResourceBar = %ManaBar
 
 signal mana_changed(new_mana: int)
 signal mutation_unlocked()
@@ -23,7 +26,18 @@ var available_missions: Array[MutationMission] = []
 var mutation_history: Array[TreeMutation] = []
 var active_mutation: TreeMutation = null
 
+func _ready() -> void:
+	if is_instance_valid(mana_bar):
+		mana_bar.value = 50
+		var fill = mana_bar.get_theme_stylebox("fill") as StyleBoxFlat
+		var background = mana_bar.get_theme_stylebox("fill") as StyleBoxFlat
+
+		fill.bg_color = Color.WHITE
+		background.bg_color = Color.RED
+
 func _process(delta: float) -> void:
+	if is_instance_valid(mana_bar):
+		mana_bar.value += 1 * delta
 	var changed := false
 	for pet in pets:
 		if not pet.is_on_mission and pet.current_health < pet.max_health:
