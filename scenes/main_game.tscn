@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://i4qd5ktsvgk1"]
+
+[ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
+[ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
+
+[node name="Main" type="Node2D" unique_id=438888407]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=767376372]
+position = Vector2(482.11102, 271.25003)
+scale = Vector2(0.5106481, 0.5106481)
+texture = ExtResource("2_rvslj")
+
+[node name="PlayerTree" parent="." unique_id=1691204110 instance=ExtResource("2_0bbpv")]
+position = Vector2(528, 1063)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
+
+[node name="UI" type="Node2D" parent="CanvasLayer" unique_id=1462396979]
+position = Vector2(90, 255)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI" unique_id=1286149277]
+offset_left = 478.0
+offset_top = -237.0
+offset_right = 850.0
+offset_bottom = -159.0
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Panel" unique_id=375235270]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 47.0
+text = "Stats go here"
