@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bbewx5wj6j67d"]
+
+[ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="1_0vqus"]
+
+[node name="PetGrid" type="GridContainer" unique_id=1610547865]
+script = ExtResource("1_0vqus")
+metadata/_custom_type_script = "uid://cob3f1vka25ic"
