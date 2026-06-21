@@ -3,8 +3,14 @@
 [ext_resource type="Script" uid="uid://dj4mwxhcbpmd3" path="res://scenes/main_game/main_game.gd" id="1_yra6k"]
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
-[ext_resource type="Script" uid="uid://brglhdmbh8efe" path="res://scenes/ui/resource_bar/resource_bar.gd" id="3_d2op2"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid.gd" id="5_8ywsm"]
+[ext_resource type="Texture2D" uid="uid://cg07knoye86lv" path="res://assets/UI/Mana.png" id="6_6eclk"]
+[ext_resource type="Texture2D" uid="uid://q0upicfr3phh" path="res://assets/UI/Mission.png" id="6_mijjq"]
+[ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
+[ext_resource type="Script" uid="uid://cwfbaqsb0q0yr" path="res://scenes/ui/clickable_icon/clickable_icon.gd" id="7_r81kp"]
+[ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
+[ext_resource type="Texture2D" uid="uid://bjeqagisj8o5t" path="res://assets/UI/Settings.png" id="8_r81kp"]
+[ext_resource type="Texture2D" uid="uid://elmae8dlhwie" path="res://assets/UI/Pets_highlighted.png" id="10_b4n6q"]
 
 [sub_resource type="Gradient" id="Gradient_8ywsm"]
 
@@ -22,10 +28,6 @@ gravity = Vector3(-200, 1198, 0)
 scale_max = 1.1
 color_initial_ramp = SubResource("GradientTexture1D_pll4o")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yra6k"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ywsm"]
-
 [node name="MainGame" type="Node2D" unique_id=438888407]
 script = ExtResource("1_yra6k")
 
@@ -37,6 +39,7 @@ texture = ExtResource("2_rvslj")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Background" unique_id=888413856]
 z_index = 1
 position = Vector2(91.666664, 60)
+emitting = false
 amount = 4000
 lifetime = 19.21
 visibility_rect = Rect2(-100, -100, 2000, 200)
@@ -49,19 +52,8 @@ position = Vector2(49, 114)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
 
-[node name="ManaBar" type="ProgressBar" parent="CanvasLayer" unique_id=1286475705]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 20)
-offset_right = 100.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_yra6k")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8ywsm")
-value = 50.0
-show_percentage = false
-script = ExtResource("3_d2op2")
-metadata/_custom_type_script = "uid://brglhdmbh8efe"
-
 [node name="RightSide" type="VBoxContainer" parent="CanvasLayer" unique_id=1578267630]
+visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -105,19 +97,50 @@ text = "100/100"
 layout_mode = 2
 text = "Available"
 
-[node name="UI" type="Node2D" parent="CanvasLayer" unique_id=1462396979]
-position = Vector2(90, 255)
+[node name="TopBar" type="HBoxContainer" parent="CanvasLayer" unique_id=573670683]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 42.0
+grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/UI" unique_id=1286149277]
-offset_left = 363.0
-offset_top = -241.0
-offset_right = 735.0
-offset_bottom = -163.0
+[node name="ManaContainer" type="HBoxContainer" parent="CanvasLayer/TopBar" unique_id=293130590]
+layout_mode = 2
+size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/Panel" unique_id=375235270]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 24.0
-offset_right = 180.0
-offset_bottom = 47.0
-text = "Stats go here"
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopBar/ManaContainer" unique_id=583307228]
+layout_mode = 2
+texture = ExtResource("6_6eclk")
+expand_mode = 2
+
+[node name="ManaLabel" type="Label" parent="CanvasLayer/TopBar/ManaContainer" unique_id=1055385874]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+
+[node name="CenterButtons" type="HBoxContainer" parent="CanvasLayer/TopBar" unique_id=1415121764]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MissionsButton" type="TextureRect" parent="CanvasLayer/TopBar/CenterButtons" unique_id=2070294331]
+layout_mode = 2
+texture = ExtResource("6_mijjq")
+expand_mode = 2
+script = ExtResource("7_r81kp")
+default_texture = ExtResource("6_mijjq")
+hovered_texture = ExtResource("8_fetp2")
+metadata/_custom_type_script = "uid://cwfbaqsb0q0yr"
+
+[node name="PetOverviewButton" type="TextureRect" parent="CanvasLayer/TopBar/CenterButtons" unique_id=498592345]
+layout_mode = 2
+texture = ExtResource("7_ldk84")
+expand_mode = 2
+script = ExtResource("7_r81kp")
+default_texture = ExtResource("7_ldk84")
+hovered_texture = ExtResource("10_b4n6q")
+metadata/_custom_type_script = "uid://cwfbaqsb0q0yr"
+
+[node name="SettingsButton" type="TextureRect" parent="CanvasLayer/TopBar" unique_id=422096400]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("8_r81kp")
+expand_mode = 2
