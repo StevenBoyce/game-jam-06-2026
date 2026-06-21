@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
 [ext_resource type="Texture2D" uid="uid://bjeqagisj8o5t" path="res://assets/UI/Settings.png" id="8_r81kp"]
 [ext_resource type="Texture2D" uid="uid://elmae8dlhwie" path="res://assets/UI/Pets_highlighted.png" id="10_b4n6q"]
+[ext_resource type="AudioStream" uid="uid://b7d4bqhdpeoom" path="res://assets/sound/rain.mp3" id="15_irrf2"]
 
 [sub_resource type="Gradient" id="Gradient_b4n6q"]
 
@@ -157,3 +158,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("8_r81kp")
 expand_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
+stream = ExtResource("15_irrf2")
+autoplay = true
