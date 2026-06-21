@@ -6,6 +6,22 @@
 [ext_resource type="Script" uid="uid://brglhdmbh8efe" path="res://scenes/ui/resource_bar/resource_bar.gd" id="3_d2op2"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid.gd" id="5_8ywsm"]
 
+[sub_resource type="Gradient" id="Gradient_8ywsm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pll4o"]
+gradient = SubResource("Gradient_8ywsm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6eclk"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(1000, -200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1000, 200, 1)
+inherit_velocity_ratio = -0.365
+spread = 135.536
+gravity = Vector3(-200, 1198, 0)
+scale_max = 1.1
+color_initial_ramp = SubResource("GradientTexture1D_pll4o")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yra6k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ywsm"]
@@ -17,6 +33,16 @@ script = ExtResource("1_yra6k")
 position = Vector2(573.44446, 321.25003)
 scale = Vector2(0.60578704, 0.60324067)
 texture = ExtResource("2_rvslj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Background" unique_id=888413856]
+z_index = 1
+position = Vector2(91.666664, 60)
+amount = 4000
+lifetime = 19.21
+visibility_rect = Rect2(-100, -100, 2000, 200)
+trail_enabled = true
+trail_lifetime = 0.03
+process_material = SubResource("ParticleProcessMaterial_6eclk")
 
 [node name="PlayerTree" parent="." unique_id=1691204110 instance=ExtResource("2_0bbpv")]
 position = Vector2(49, 114)
