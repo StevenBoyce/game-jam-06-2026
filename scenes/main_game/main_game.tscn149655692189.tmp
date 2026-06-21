@@ -72,6 +72,20 @@ expand_margin_top = 20.0
 expand_margin_right = 20.0
 expand_margin_bottom = 20.0
 
+[sub_resource type="GDScript" id="GDScript_uddg2"]
+script/source = "class_name Overlay
+extends Control
+
+@onready var overlay2: Control = %Overlay2
+
+func _ready() -> void:
+	Events.overlay_icon_clicked.connect(_on_overlay_icon_clicked)
+
+func _on_overlay_icon_clicked(view_name: String) -> void:
+	if view_name == \"pets\":
+		overlay2.visible = true
+"
+
 [sub_resource type="Curve" id="Curve_ebk6p"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.85113275, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -94,20 +108,6 @@ scale_min = 6.0
 scale_max = 12.0
 scale_curve = SubResource("CurveTexture_qtaex")
 color = Color(1, 0, 0, 1)
-
-[sub_resource type="GDScript" id="GDScript_uddg2"]
-script/source = "
-extends Control
-
-@onready var overlay2: Control = %Overlay2
-
-func _ready() -> void:
-	Events.overlay_icon_clicked.connect(_on_overlay_icon_clicked)
-
-func _on_overlay_icon_clicked(view_name: String) -> void:
-	if view_name == \"pets\":
-		overlay2.visible = true
-"
 
 [node name="MainGame" type="Node2D" unique_id=438888407]
 script = ExtResource("1_yra6k")
@@ -409,6 +409,139 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(220, 700)
 texture = ExtResource("17_feobv")
 
+[node name="Overlay2" type="Control" parent="CanvasLayer" unique_id=1451192609]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_uddg2")
+metadata/_custom_type_script = "uid://b8ms64f6cpv5r"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Overlay2" unique_id=189753601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015686275, 0.015686275, 0.015686275, 0.78039217)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Overlay2/ColorRect" unique_id=710142277]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer" unique_id=2143616128]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel3" type="Button" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=1720889316]
+custom_minimum_size = Vector2(240, 440)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3" unique_id=36338602]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer" unique_id=1947902048]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 24
+text = "
+
+
+Quest: Retrieve a Silver Egg
+
+
+
+
+
+
+
+Rarity: Mythical
+Mana Cost: 500
+Success Rate: 78%
+
+
+
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer/Label" unique_id=2011655067]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.25, 0.25)
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(220, 700)
+texture = ExtResource("17_feobv")
+
+[node name="Panel4" type="Button" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=1845394781]
+custom_minimum_size = Vector2(240, 440)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4" unique_id=1581278848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer" unique_id=791362308]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 24
+text = "
+
+
+Quest: Retrieve a Silver Egg
+
+
+
+
+
+
+
+Rarity: Mythical
+Mana Cost: 500
+Success Rate: 78%
+
+
+
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer/Label" unique_id=546114949]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.25, 0.25)
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(220, 700)
+texture = ExtResource("17_feobv")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
 stream = ExtResource("15_irrf2")
 autoplay = true
@@ -513,140 +646,8 @@ offset_transform_enabled = true
 offset_transform_scale = Vector2(0.315, 0.315)
 texture_normal = ExtResource("7_gxjft")
 script = ExtResource("25_qspar")
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1540306347]
-
-[node name="Overlay2" type="Control" parent="CanvasLayer3" unique_id=547774308]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = SubResource("GDScript_uddg2")
-metadata/_custom_type_script = "uid://b8ms64f6cpv5r"
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer3/Overlay2" unique_id=1308046053]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.015686275, 0.015686275, 0.015686275, 0.78039217)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer3/Overlay2/ColorRect" unique_id=23971805]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer" unique_id=97404900]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Panel3" type="Button" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=1683559707]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3" unique_id=318262083]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer" unique_id=1155340909]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer/Label" unique_id=177837573]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
-
-[node name="Panel4" type="Button" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=188988580]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4" unique_id=1151962052]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer" unique_id=67543288]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer/Label" unique_id=1103285417]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
+max_angle_degrees = null
+min_angle_degrees = null
+start_speed = null
+speed_increase = null
+decay_rate = null
