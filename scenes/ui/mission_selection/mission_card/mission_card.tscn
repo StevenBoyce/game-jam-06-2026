@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxx2r3bprh38d"]
+
+[ext_resource type="Script" uid="uid://rkxkvyemjwwb" path="res://scenes/ui/mission_selection/mission_card/mission_card.gd" id="1_lweon"]
+[ext_resource type="Texture2D" uid="uid://dmxvqaa88qd24" path="res://assets/cards/eldritch_bronze.png" id="1_mi2fx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lweon"]
+texture = ExtResource("1_mi2fx")
+
+[node name="MissionCard" type="PanelContainer" unique_id=580802880]
+custom_minimum_size = Vector2(150, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lweon")
+script = ExtResource("1_lweon")

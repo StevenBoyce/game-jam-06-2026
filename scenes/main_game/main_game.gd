@@ -2,6 +2,9 @@ class_name MainGame
 extends Node2D
 
 @onready var mana_label: Label = %ManaLabel
+@onready var overlay: Control = %Overlay
+@onready var pet_grid_scene: PackedScene = preload("res://scenes/ui/pet_grid/pet_grid.tscn")
+
 
 signal mana_changed(new_mana: int)
 signal mutation_unlocked()
@@ -17,6 +20,8 @@ var pet_acquisition_rate: float = 1.0
 var pet_healing_rate: float = 1.0
 var mana_reward_multiplier: float = 1.0
 var success_buff_active: bool = false
+var overlay_status: bool = false
+
 
 # - Collections -
 var pets: Array[Pet] = []
@@ -28,10 +33,21 @@ var active_mutation: TreeMutation = null
 func _ready() -> void:
 	if is_instance_valid(mana_label):
 		mana_label.text = str(mana)
+	if is_instance_valid(overlay):
+		overlay.visible = overlay_status
+
+	Events.overlay_status_changed.connect(_on_overlay_status_changed)
+	Events.overlay_icon_clicked.connect(_on_overlay_icon_clicked)
 	
 	add_pet(Pet.new("Steve", "Turtle", 100.0))
 	add_pet(Pet.new("Karen", "Wolf", 100.0))
 	Events.pets_changed.emit()
+
+func _on_overlay_status_changed(status: bool) -> void:
+	print("overlay status changed: ", status)
+
+func _on_overlay_icon_clicked(view_name: String) -> void:
+	print("overlay icon clicked: ", view_name)
 
 func _process(delta: float) -> void:
 	var changed := false
