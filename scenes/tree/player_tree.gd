@@ -6,7 +6,7 @@ var t = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	maketree(Color.ORANGE, 8, 1, 0)
+	maketree(Color.ORANGE, 3, 1, 0)
 	
 func maketree(leaf_color, layers, leaf_length, density):
 	wind_pivot = Node2D.new()
@@ -16,10 +16,9 @@ func maketree(leaf_color, layers, leaf_length, density):
 	wind_pivot.add_child(tree_node)
 	
 
-	tree_node.scale = Vector2(0.7, 0.7)
-	tree_node.position = Vector2(-100, -500)
+	tree_node.scale = Vector2(0.6, 0.6)
 	
-	var tree = createpoints(8)
+	var tree = createpoints(layers)
 	var width = get_viewport().get_visible_rect().size.x
 	var height = get_viewport().get_visible_rect().size.y
 
@@ -52,16 +51,16 @@ func maketree(leaf_color, layers, leaf_length, density):
 	var scaler = 1/max_value
 
 	for branch in tree:
-		var layer = int(floor(log(branch_index + 1) / log(2)))
+		var layer2 = int(floor(log(branch_index + 1) / log(2)))
 			
 
-		var start_scale = pow(taper_factor, layer)
-		var end_scale = pow(taper_factor, layer + 1)
+		var start_scale = pow(taper_factor, layer2)
+		var end_scale = pow(taper_factor, layer2 + 1)
 
 		var line = Line2D.new()
 		
 		
-		line.z_index = layer
+		line.z_index = layer2
 		
 		
 		line.width = base_width
@@ -88,7 +87,7 @@ func maketree(leaf_color, layers, leaf_length, density):
 		if branch_index > 6:
 			for j in range(density):
 				var circle = Polygon2D.new()
-				circle.z_index = layer + 1
+				circle.z_index = layer2 + 1
 
 				var points = PackedVector2Array()
 				var rand_size = randf_range(2.0, 7.0)

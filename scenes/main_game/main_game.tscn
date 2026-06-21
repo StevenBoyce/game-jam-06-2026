@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dj4mwxhcbpmd3" path="res://scenes/main_game/main_game.gd" id="1_yra6k"]
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
+[ext_resource type="Texture2D" uid="uid://ba40thx838ocf" path="res://assets/foregrass2.png" id="3_b4n6q"]
+[ext_resource type="Texture2D" uid="uid://wesgw1i6ptke" path="res://assets/clouds3.png" id="4_4y18v"]
+[ext_resource type="Script" uid="uid://b2xii2e87jo4w" path="res://scenes/battle/sprite_2d.gd" id="5_irrf2"]
 [ext_resource type="Texture2D" uid="uid://cg07knoye86lv" path="res://assets/UI/Mana.png" id="6_6eclk"]
 [ext_resource type="Texture2D" uid="uid://q0upicfr3phh" path="res://assets/UI/Mission.png" id="6_mijjq"]
 [ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
@@ -13,13 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://chulyf8e0cqc7" path="res://scenes/ui/mission_selection/mission_selection.tscn" id="11_b4n6q"]
 [ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="12_gl27v"]
+[ext_resource type="AudioStream" uid="uid://b7d4bqhdpeoom" path="res://assets/sound/rain.mp3" id="15_irrf2"]
 
-[sub_resource type="Gradient" id="Gradient_8ywsm"]
+[sub_resource type="Gradient" id="Gradient_b4n6q"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pll4o"]
-gradient = SubResource("Gradient_8ywsm")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gl27v"]
+gradient = SubResource("Gradient_b4n6q")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6eclk"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4y18v"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(1000, -200, 0)
 emission_shape = 3
@@ -28,29 +32,39 @@ inherit_velocity_ratio = -0.365
 spread = 135.536
 gravity = Vector3(-200, 1198, 0)
 scale_max = 1.1
-color_initial_ramp = SubResource("GradientTexture1D_pll4o")
+color_initial_ramp = SubResource("GradientTexture1D_gl27v")
 
 [node name="MainGame" type="Node2D" unique_id=438888407]
 script = ExtResource("1_yra6k")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=767376372]
-position = Vector2(573.44446, 321.25003)
-scale = Vector2(0.60578704, 0.60324067)
-texture = ExtResource("2_rvslj")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Background" unique_id=888413856]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=743078342]
 z_index = 1
-position = Vector2(91.666664, 60)
-emitting = false
+position = Vector2(21.000061, -20.99997)
+scale = Vector2(0.60578704, 0.60324067)
 amount = 4000
 lifetime = 19.21
 visibility_rect = Rect2(-100, -100, 2000, 200)
 trail_enabled = true
 trail_lifetime = 0.03
-process_material = SubResource("ParticleProcessMaterial_6eclk")
+process_material = SubResource("ParticleProcessMaterial_4y18v")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=767376372]
+modulate = Color(0.33809972, 0.3380997, 0.33809966, 1)
+position = Vector2(573.44446, 321.25003)
+scale = Vector2(0.60578704, 0.60324067)
+texture = ExtResource("2_rvslj")
+
+[node name="Grass" type="Sprite2D" parent="Background" unique_id=1569645920]
+z_index = 3
+texture = ExtResource("3_b4n6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=632770537]
+position = Vector2(992, 0)
+texture = ExtResource("4_4y18v")
+script = ExtResource("5_irrf2")
 
 [node name="PlayerTree" parent="." unique_id=1691204110 instance=ExtResource("2_0bbpv")]
-position = Vector2(49, 114)
+position = Vector2(101, 214)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
 
@@ -141,5 +155,9 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "X"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
+stream = ExtResource("15_irrf2")
+autoplay = true
 
 [connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]
