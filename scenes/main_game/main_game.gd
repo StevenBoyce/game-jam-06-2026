@@ -13,7 +13,10 @@ signal mission_started()
 signal mission_completed()
 
 # - Tree stats -
-var mana: int = 0
+var mana: int = 0:
+	set(value):
+		mana = value
+		mana_changed.emit(mana)
 var max_mana: int = 100
 var pet_capacity: int = 3
 var pet_acquisition_rate: float = 1.0

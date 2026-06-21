@@ -2,17 +2,28 @@
 
 [ext_resource type="Script" uid="uid://rkxkvyemjwwb" path="res://scenes/ui/mission_selection/mission_card/mission_card.gd" id="1_lweon"]
 [ext_resource type="Texture2D" uid="uid://dmxvqaa88qd24" path="res://assets/cards/eldritch_bronze.png" id="1_mi2fx"]
+[ext_resource type="Script" uid="uid://tuptg6b2nihi" path="res://scenes/ui/mission_selection/mission_card/mission_button.gd" id="3_awwpg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lweon"]
 texture = ExtResource("1_mi2fx")
 
 [node name="MissionCard" type="PanelContainer" unique_id=580802880]
+process_mode = 3
 custom_minimum_size = Vector2(150, 400)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_lweon")
 script = ExtResource("1_lweon")
 
+[node name="Button" type="Button" parent="." unique_id=82724522]
+process_mode = 3
+layout_mode = 2
+flat = true
+script = ExtResource("3_awwpg")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1983746501]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 12
@@ -20,10 +31,11 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1234567890]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="ItemImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=9876543210]
+[node name="ItemImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1286608618]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
@@ -36,3 +48,5 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

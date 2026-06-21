@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
 [ext_resource type="Script" uid="uid://cwfbaqsb0q0yr" path="res://scenes/ui/clickable_icon/clickable_icon.gd" id="7_r81kp"]
 [ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
+[ext_resource type="Script" uid="uid://bidf3i55j2j7a" path="res://scenes/main_game/mana_label.gd" id="8_l774p"]
 [ext_resource type="Texture2D" uid="uid://bjeqagisj8o5t" path="res://assets/UI/Settings.png" id="8_r81kp"]
 [ext_resource type="Texture2D" uid="uid://elmae8dlhwie" path="res://assets/UI/Pets_highlighted.png" id="10_b4n6q"]
 [ext_resource type="PackedScene" uid="uid://chulyf8e0cqc7" path="res://scenes/ui/mission_selection/mission_selection.tscn" id="11_b4n6q"]
@@ -87,6 +88,7 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "100"
+script = ExtResource("8_l774p")
 
 [node name="CenterButtons" type="HBoxContainer" parent="CanvasLayer/TopBar" unique_id=1415121764]
 layout_mode = 2

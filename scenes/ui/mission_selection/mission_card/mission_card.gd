@@ -14,3 +14,4 @@ func setup(m: MutationMission) -> void:
 		add_theme_stylebox_override("panel", style)
 	item_image.texture = m.item_image
 	title_label.text = m.title
+	mission.mana_reward = randi_range(mission.mana_reward_min, mission.mana_reward_max)

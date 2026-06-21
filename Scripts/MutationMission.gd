@@ -20,7 +20,9 @@ enum RewardType {
 @export var pets: Array[Pet] = []
 @export var health_loss_min: float = 10.0
 @export var health_loss_max: float = 20.0
-@export var mana_reward: int = 50
+@export var mana_reward_min: int = 10
+@export var mana_reward_max: int = 30
+var mana_reward: int = 0
 @export_enum("25", "50", "75", "100") var success_rate: int = 50
 @export var reward_type: RewardType = RewardType.GAIN_MANA
 @export var reward_value: float = 0.0
@@ -28,6 +30,9 @@ enum RewardType {
 @export var duration: float = 20.0
 @export var card_border: Texture2D
 @export var item_image: Texture2D
+
+func _ready() -> void:
+	mana_reward = randi_range(mana_reward_min, mana_reward_max)
 
 func get_random_health_loss() -> float:
 	return randf_range(health_loss_min, health_loss_max)
