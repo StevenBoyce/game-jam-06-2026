@@ -126,40 +126,65 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = 74.0
-offset_right = -71.0
-offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_gl27v")
 
-[node name="MissionSelection" parent="CanvasLayer/Overlay" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
-unique_name_in_owner = true
+[node name="PetMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=1321121849]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay" unique_id=1053140515]
+[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay/PetMarginContainer" unique_id=1053140515]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+columns = 3
 script = ExtResource("12_gl27v")
 metadata/_custom_type_script = "uid://cob3f1vka25ic"
 
-[node name="CloseButton" type="Label" parent="CanvasLayer/Overlay" unique_id=342977575]
+[node name="MissionSelectMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=1469588179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MissionSelection" parent="CanvasLayer/Overlay/MissionSelectMarginContainer" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
 unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CloseMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=472701747]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -100.0
+offset_bottom = 81.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "X"
+mouse_filter = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Overlay/CloseMarginContainer" unique_id=773537431]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
 stream = ExtResource("15_irrf2")
 autoplay = true
 
-[connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]
+[connection signal="pressed" from="CanvasLayer/Overlay/CloseMarginContainer/CloseButton" to="CanvasLayer/Overlay" method="_on_close_pressed"]

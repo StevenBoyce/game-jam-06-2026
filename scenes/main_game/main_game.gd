@@ -71,7 +71,10 @@ func _ready() -> void:
 	add_pet(Pet.new("Karen", "Wolf", 100.0))
 	Events.pets_changed.emit()
 
-	_setup_mission_refresh()
+	# _setup_mission_refresh()
+	init_missions()
+	Events.mission_selected.connect(init_missions)
+
 
 func _on_overlay_icon_clicked(view_name: String) -> void:
 	print("overlay icon clicked: ", view_name)
@@ -80,8 +83,6 @@ func _on_overlay_icon_clicked(view_name: String) -> void:
 		overlay.visible = true
 
 func _on_overlay_closed() -> void:
-	print("overlay closed")
-	print("overlay is valid: ", is_instance_valid(overlay))
 	if is_instance_valid(overlay):
 		overlay.visible = false
 
@@ -104,14 +105,15 @@ func init_missions() -> void:
 	if available_missions.size() < MISSION_COUNT:
 		push_warning("Could only generate %d unique missions." % available_missions.size())
 	print(available_missions)
+	Events.missions_refreshed.emit()
 
-func _setup_mission_refresh() -> void:
-	init_missions()
-	_mission_refresh_timer = Timer.new()
-	_mission_refresh_timer.wait_time = MISSION_REFRESH_SECONDS
-	_mission_refresh_timer.autostart = true
-	_mission_refresh_timer.timeout.connect(init_missions)
-	add_child(_mission_refresh_timer)
+# func _setup_mission_refresh() -> void:
+# 	init_missions()
+# 	_mission_refresh_timer = Timer.new()
+# 	_mission_refresh_timer.wait_time = MISSION_REFRESH_SECONDS
+# 	_mission_refresh_timer.autostart = true
+# 	_mission_refresh_timer.timeout.connect(init_missions)
+# 	add_child(_mission_refresh_timer)
 
 func _pick_weighted_border_tier() -> String:
 	var total := 0
