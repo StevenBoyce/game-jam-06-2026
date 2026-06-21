@@ -86,7 +86,7 @@ func _ready():
 
 				for i in range(16):
 					var angle = TAU * i / 16.0
-					points.append(Vector2(cos(angle), sin(angle)) * rand_size)
+					points.append(Vector2(cos(angle), sin(angle)) * rand_size*20)
 
 				var rand_locationx = randf_range(-20.0, 20.0)
 				var rand_locationy = randf_range(-20.0, 20.0)

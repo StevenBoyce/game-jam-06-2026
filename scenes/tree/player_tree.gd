@@ -6,6 +6,9 @@ var t = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	maketree(Color.ORANGE, 8, 1, 0)
+	
+func maketree(leaf_color, layers, leaf_length, density):
 	wind_pivot = Node2D.new()
 	add_child(wind_pivot)
 
@@ -16,7 +19,7 @@ func _ready():
 	tree_node.scale = Vector2(0.7, 0.7)
 	tree_node.position = Vector2(-100, -500)
 	
-	var tree = createpoints()
+	var tree = createpoints(8)
 	var width = get_viewport().get_visible_rect().size.x
 	var height = get_viewport().get_visible_rect().size.y
 
@@ -83,7 +86,7 @@ func _ready():
 
 		tree_node.add_child(line)
 		if branch_index > 6:
-			for j in range(6):
+			for j in range(density):
 				var circle = Polygon2D.new()
 				circle.z_index = layer + 1
 
@@ -92,16 +95,16 @@ func _ready():
 
 				for i in range(16):
 					var angle = TAU * i / 16.0
-					points.append(Vector2(cos(angle), sin(angle)) * rand_size)
+					points.append(Vector2(cos(angle)*1/(leaf_length*leaf_length), sin(angle)) * rand_size*leaf_length)
 
 				var rand_locationx = randf_range(-20.0, 20.0)
 				var rand_locationy = randf_range(-20.0, 20.0)
 
 				circle.polygon = points
-				circle.color = Color.ORANGE
+				circle.color = leaf_color
 				circle.position = Vector2(
 					scaled_width1 + rand_locationx,
-					scaled_height1 + rand_locationy
+					scaled_height1 + rand_locationy+(leaf_length*5)
 				)
 
 				tree_node.add_child(circle)
@@ -114,7 +117,7 @@ func _process(delta):
 
 	wind_pivot.rotation = deg_to_rad(sin(t * 2.0) * 0.2)
 	
-func createpoints():
+func createpoints(layers):
 	# Initialize the very first line segment  ( the trunk) of the tree
 	var arr = []
 	arr.resize(6)
@@ -129,12 +132,11 @@ func createpoints():
 	arr[3] = end_y
 	arr[4] = angle
 	
-	
 	# InitiIalize the array of arrays that will store the line segments that makeup the tree.
 	var tree = []
 	tree.resize(1)
 	tree[0] = arr
-	var layers = 6
+	#var layers = 6
 	var branches = pow(2, layers- 1) - 2
 	var i = 0
 	while i < branches:
