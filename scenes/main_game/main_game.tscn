@@ -17,6 +17,11 @@
 [ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="12_gl27v"]
 [ext_resource type="AudioStream" uid="uid://b7d4bqhdpeoom" path="res://assets/sound/rain.mp3" id="15_irrf2"]
+[ext_resource type="FontFile" uid="uid://n7s4w4sn5bsh" path="res://assets/fonts/Dead Font Walking.otf" id="18_l774p"]
+[ext_resource type="Script" uid="uid://3f2la7np2yek" path="res://scenes/main_game/menu_button.gd" id="19_r8wn4"]
+[ext_resource type="Script" uid="uid://d1lgsglpjyxki" path="res://scenes/main_game/menu_button_3.gd" id="20_feobv"]
+[ext_resource type="AudioStream" uid="uid://brmesycq3yws5" path="res://assets/sound/sfx/hover.mp3" id="20_kwr1i"]
+[ext_resource type="AudioStream" uid="uid://8rexyfk3p8ow" path="res://assets/sound/sfx/click.mp3" id="21_fxa2l"]
 
 [sub_resource type="Gradient" id="Gradient_b4n6q"]
 
@@ -33,6 +38,29 @@ spread = 135.536
 gravity = Vector3(-200, 1198, 0)
 scale_max = 1.1
 color_initial_ramp = SubResource("GradientTexture1D_gl27v")
+
+[sub_resource type="Curve" id="Curve_ebk6p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.85113275, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qtaex"]
+curve = SubResource("Curve_ebk6p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2aa0p"]
+lifetime_randomness = 0.32
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(800, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -98, 0)
+radial_accel_min = -30.070002
+radial_accel_max = 35.659996
+tangential_accel_min = 20.219997
+tangential_accel_max = 23.019997
+scale_min = 6.0
+scale_max = 12.0
+scale_curve = SubResource("CurveTexture_qtaex")
+color = Color(1, 0, 0, 1)
 
 [node name="MainGame" type="Node2D" unique_id=438888407]
 script = ExtResource("1_yra6k")
@@ -63,8 +91,9 @@ position = Vector2(992, 0)
 texture = ExtResource("4_4y18v")
 script = ExtResource("5_irrf2")
 
-[node name="PlayerTree" parent="." unique_id=1691204110 instance=ExtResource("2_0bbpv")]
-position = Vector2(101, 214)
+[node name="PlayerTree" parent="Background" unique_id=1691204110 instance=ExtResource("2_0bbpv")]
+position = Vector2(-779.8854, -177.7898)
+scale = Vector2(1.650745, 1.6577132)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
 
@@ -120,6 +149,7 @@ expand_mode = 2
 
 [node name="Overlay" type="Control" parent="CanvasLayer" unique_id=342003157]
 unique_name_in_owner = true
+modulate = Color(0.933207, 0.933207, 0.9332069, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,5 +189,87 @@ text = "X"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
 stream = ExtResource("15_irrf2")
 autoplay = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1286777272]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1572093872]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78039217)
+
+[node name="Control" type="Control" parent="CanvasLayer2/ColorRect" unique_id=1250244146]
+self_modulate = Color(0.17785347, 0.17785347, 0.17785347, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2/ColorRect/Control" unique_id=514073850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer2/ColorRect/Control/CenterContainer" unique_id=1830113327]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/CenterContainer2" unique_id=1573296560]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 40
+text = "where am I ... "
+
+[node name="Label2" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/CenterContainer2" unique_id=1213946764]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 40
+text = "...am I a tree..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/ColorRect/Control/CenterContainer" unique_id=1534621976]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1592014050]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.06666667, 1)
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 50
+text = "Cult Of The Tree"
+
+[node name="MenuButton" type="Button" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1669309441]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 24
+text = "START GAME"
+script = ExtResource("19_r8wn4")
+
+[node name="MenuButton3" type="Button" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1901800544]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 24
+text = "CREDITS"
+script = ExtResource("20_feobv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer2" unique_id=280917225]
+position = Vector2(584, 718)
+amount = 50
+lifetime = 3.0599999999999996
+trail_enabled = true
+trail_lifetime = 0.08
+process_material = SubResource("ParticleProcessMaterial_2aa0p")
+
+[node name="hoversfx" type="AudioStreamPlayer" parent="." unique_id=339171581]
+stream = ExtResource("20_kwr1i")
+
+[node name="clicksfx" type="AudioStreamPlayer" parent="." unique_id=1721451724]
+stream = ExtResource("21_fxa2l")
 
 [connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]

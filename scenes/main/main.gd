@@ -1,7 +1,7 @@
 class_name Main
 extends Node2D
 
-@export var start_scene: PackedScene = preload("res://scenes/ui/main_menu/main_menu.tscn")
+@export var start_scene: PackedScene = preload("res://scenes/main_game/main_game.tscn")
 @onready var fade: Fade = $Fade
 var current_scene: Node
 
