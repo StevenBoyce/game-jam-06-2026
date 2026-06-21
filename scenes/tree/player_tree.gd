@@ -3,12 +3,22 @@ extends Node2D
 var tree_node: Node2D
 var wind_pivot: Node2D
 var t = 0.0
-
+var numbe = 0
+@onready var bg  = $"../Background"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	maketree(Color.ORANGE, 3, 1, 0)
+	Events.mission_selected.connect(_on_mission_selected)
+	
+func _on_mission_selected() -> void:
+	maketree(Color.ORANGE, 3+numbe, 1, 0+numbe)
+	numbe = numbe+1
+	bg.modulate *= Color(1.2, 1.2, 1.2, 1.0)
 	
 func maketree(leaf_color, layers, leaf_length, density):
+	if is_instance_valid(wind_pivot):
+		wind_pivot.queue_free()
+
 	wind_pivot = Node2D.new()
 	add_child(wind_pivot)
 
@@ -114,8 +124,8 @@ func maketree(leaf_color, layers, leaf_length, density):
 func _process(delta):
 	t += delta
 
-	wind_pivot.rotation = deg_to_rad(sin(t * 2.0) * 0.2)
-	
+	if is_instance_valid(wind_pivot):
+		wind_pivot.rotation = deg_to_rad(sin(t * 2.0) * 0.2)
 func createpoints(layers):
 	# Initialize the very first line segment  ( the trunk) of the tree
 	var arr = []

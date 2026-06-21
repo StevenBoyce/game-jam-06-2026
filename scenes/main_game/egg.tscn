@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://da5kcngi5i5pn"]
+
+[ext_resource type="Texture2D" uid="uid://c23g1embtpn8i" path="res://assets/scene/egg.png" id="1_8nj28"]
+[ext_resource type="Script" uid="uid://nnbmf4tadhxm" path="res://scenes/main_game/texture_button.gd" id="2_0vnub"]
+
+[node name="egg" type="TextureButton" unique_id=124015744]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 430.0
+offset_right = 310.0
+offset_bottom = 686.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.315, 0.315)
+texture_normal = ExtResource("1_8nj28")
+script = ExtResource("2_0vnub")

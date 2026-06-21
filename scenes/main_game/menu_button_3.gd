@@ -4,7 +4,8 @@ extends Button
 @onready var color_layer = $"../../../.."
 @onready var hover_sound = $"../../../../../../hoversfx"
 @onready var click_sound = $"../../../../../../clicksfx"
-
+@onready var end_credits = $"../../../../../../CanvasLayer3/CenterContainer"
+@onready var controller = $"../../.."
 
 
 func _ready():
@@ -17,7 +18,8 @@ func _on_pressed():
 	var tween = create_tween()
 	tween.tween_property(color_layer, "color", Color(0, 0, 0, 0), 1)
 	await tween.finished
-	canvas_layer.visible = false
+	end_credits.visible = true
+	controller.visible = false
 
 
 func _on_mouse_entered():

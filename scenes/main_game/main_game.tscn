@@ -19,8 +19,11 @@
 [ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="12_gl27v"]
 [ext_resource type="AudioStream" uid="uid://b7d4bqhdpeoom" path="res://assets/sound/rain.mp3" id="15_irrf2"]
+[ext_resource type="FontFile" uid="uid://n7s4w4sn5bsh" path="res://assets/fonts/Dead Font Walking.otf" id="18_l774p"]
 [ext_resource type="AudioStream" uid="uid://brmesycq3yws5" path="res://assets/sound/sfx/hover.mp3" id="20_fxa2l"]
 [ext_resource type="AudioStream" uid="uid://8rexyfk3p8ow" path="res://assets/sound/sfx/click.mp3" id="21_feobv"]
+[ext_resource type="PackedScene" uid="uid://da5kcngi5i5pn" path="res://scenes/main_game/egg.tscn" id="22_gxjft"]
+[ext_resource type="Texture2D" uid="uid://drrwuigyx8wst" path="res://assets/turtle.png" id="23_uddg2"]
 
 [sub_resource type="Gradient" id="Gradient_b4n6q"]
 
@@ -199,5 +202,38 @@ stream = ExtResource("20_fxa2l")
 [node name="clicksfx" type="AudioStreamPlayer" parent="." unique_id=1236694168]
 unique_name_in_owner = true
 stream = ExtResource("21_feobv")
+
+[node name="egg" parent="." unique_id=124015744 instance=ExtResource("22_gxjft")]
+
+[node name="Turtle" type="Sprite2D" parent="." unique_id=571610923]
+unique_name_in_owner = true
+visible = false
+position = Vector2(212, 516)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("23_uddg2")
+flip_h = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=546996850]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer3" unique_id=1504800315]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer3/CenterContainer" unique_id=351511205]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_l774p")
+theme_override_font_sizes/font_size = 20
+text = "Credits: 
+
+Untalented : artist/ technical artist/ sound design 
+
+Steven Boyce: UI, programmer
+
+Kyle Web: UI programmer "
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Overlay/CloseMarginContainer/CloseButton" to="CanvasLayer/Overlay" method="_on_close_pressed"]
