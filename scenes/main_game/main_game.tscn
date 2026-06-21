@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
 [ext_resource type="Script" uid="uid://cwfbaqsb0q0yr" path="res://scenes/ui/clickable_icon/clickable_icon.gd" id="7_r81kp"]
 [ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
+[ext_resource type="Script" uid="uid://bidf3i55j2j7a" path="res://scenes/main_game/mana_label.gd" id="8_l774p"]
+[ext_resource type="Texture2D" uid="uid://bjeqagisj8o5t" path="res://assets/UI/Settings.png" id="8_r81kp"]
 [ext_resource type="Texture2D" uid="uid://elmae8dlhwie" path="res://assets/UI/Pets_highlighted.png" id="10_b4n6q"]
 [ext_resource type="PackedScene" uid="uid://chulyf8e0cqc7" path="res://scenes/ui/mission_selection/mission_selection.tscn" id="11_b4n6q"]
 [ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
@@ -138,9 +140,8 @@ position = Vector2(992, 0)
 texture = ExtResource("4_4y18v")
 script = ExtResource("5_irrf2")
 
-[node name="PlayerTree" parent="Background" unique_id=1691204110 instance=ExtResource("2_0bbpv")]
-position = Vector2(-779.8854, -177.7898)
-scale = Vector2(1.650745, 1.6577132)
+[node name="PlayerTree" parent="." unique_id=1691204110 instance=ExtResource("2_0bbpv")]
+position = Vector2(101, 214)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
 
@@ -162,11 +163,8 @@ expand_mode = 2
 [node name="ManaLabel" type="Label" parent="CanvasLayer/TopBar/ManaContainer" unique_id=1055385874]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
 text = "100"
-script = SubResource("GDScript_7vrkn")
+script = ExtResource("8_l774p")
 
 [node name="CenterButtons" type="HBoxContainer" parent="CanvasLayer/TopBar" unique_id=1415121764]
 layout_mode = 2
@@ -192,6 +190,12 @@ hovered_texture = ExtResource("10_b4n6q")
 view_name = "pets"
 metadata/_custom_type_script = "uid://cwfbaqsb0q0yr"
 
+[node name="SettingsButton" type="TextureRect" parent="CanvasLayer/TopBar" unique_id=422096400]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("8_r81kp")
+expand_mode = 2
+
 [node name="Overlay" type="Control" parent="CanvasLayer" unique_id=342003157]
 unique_name_in_owner = true
 visible = false
@@ -210,443 +214,30 @@ script = ExtResource("11_gl27v")
 
 [node name="MissionSelection" parent="CanvasLayer/Overlay" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 
-[node name="Overlay3" type="Control" parent="CanvasLayer" unique_id=1880488967]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("11_gl27v")
-metadata/_custom_type_script = "uid://b8ms64f6cpv5r"
-
-[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay3" unique_id=1053140515]
+[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay" unique_id=1053140515]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 72.0
-offset_top = 74.0
-offset_right = 112.0
-offset_bottom = 114.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("12_gl27v")
 metadata/_custom_type_script = "uid://cob3f1vka25ic"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Overlay3" unique_id=1787109237]
+[node name="CloseButton" type="Label" parent="CanvasLayer/Overlay" unique_id=342977575]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.015686275, 0.015686275, 0.015686275, 0.78039217)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Overlay3/ColorRect" unique_id=1261872238]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer" unique_id=208196673]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Panel3" type="Button" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer" unique_id=727201652]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel3" unique_id=1277564847]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer" unique_id=2106812552]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer/Label" unique_id=1347827274]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
-
-[node name="Panel4" type="Button" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer" unique_id=1623463130]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel4" unique_id=1489293770]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer" unique_id=2073815892]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer/Label" unique_id=1617255108]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
-
-[node name="Panel5" type="Button" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer" unique_id=2040184895]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel5" unique_id=1903281804]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel5/VBoxContainer" unique_id=809533290]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay3/ColorRect/CenterContainer/HBoxContainer/Panel5/VBoxContainer/Label" unique_id=537553622]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "X"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
 stream = ExtResource("15_irrf2")
 autoplay = true
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1286777272]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1572093872]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.78039217)
-
-[node name="Control" type="Control" parent="CanvasLayer2/ColorRect" unique_id=1250244146]
-self_modulate = Color(0.17785347, 0.17785347, 0.17785347, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2/ColorRect/Control" unique_id=514073850]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer2/ColorRect/Control/CenterContainer" unique_id=1830113327]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/CenterContainer2" unique_id=1573296560]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 40
-text = "where am I ... "
-
-[node name="Label2" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/CenterContainer2" unique_id=1213946764]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 40
-text = "...am I a tree..."
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/ColorRect/Control/CenterContainer" unique_id=1534621976]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1592014050]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0.06666667, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 50
-text = "Cult Of The Tree"
-
-[node name="MenuButton" type="Button" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1669309441]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "START GAME"
-script = ExtResource("19_r8wn4")
-
-[node name="MenuButton3" type="Button" parent="CanvasLayer2/ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1901800544]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "CREDITS"
-script = ExtResource("20_feobv")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer2" unique_id=280917225]
-position = Vector2(584, 718)
-amount = 50
-lifetime = 3.0599999999999996
-trail_enabled = true
-trail_lifetime = 0.08
-process_material = SubResource("ParticleProcessMaterial_2aa0p")
-
-[node name="hoversfx" type="AudioStreamPlayer" parent="." unique_id=339171581]
-unique_name_in_owner = true
-stream = ExtResource("20_kwr1i")
-
-[node name="clicksfx" type="AudioStreamPlayer" parent="." unique_id=1721451724]
-unique_name_in_owner = true
-stream = ExtResource("21_fxa2l")
-
-[node name="egg" type="TextureButton" parent="." unique_id=1122322140]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = 430.0
-offset_right = 310.0
-offset_bottom = 686.0
-grow_horizontal = 2
-grow_vertical = 0
-offset_transform_enabled = true
-offset_transform_scale = Vector2(0.315, 0.315)
-texture_normal = ExtResource("7_gxjft")
-script = ExtResource("25_qspar")
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1540306347]
-
-[node name="Overlay2" type="Control" parent="CanvasLayer3" unique_id=547774308]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = SubResource("GDScript_uddg2")
-metadata/_custom_type_script = "uid://b8ms64f6cpv5r"
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer3/Overlay2" unique_id=1308046053]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.015686275, 0.015686275, 0.015686275, 0.78039217)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer3/Overlay2/ColorRect" unique_id=23971805]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer" unique_id=97404900]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Panel3" type="Button" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=1683559707]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3" unique_id=318262083]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer" unique_id=1155340909]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel3/VBoxContainer/Label" unique_id=177837573]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
-
-[node name="Panel4" type="Button" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer" unique_id=188988580]
-custom_minimum_size = Vector2(240, 440)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_fxa2l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2aa0p")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4" unique_id=1151962052]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer" unique_id=67543288]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.019925633, 0.019925632, 0.019925632, 1)
-theme_override_fonts/font = ExtResource("18_l774p")
-theme_override_font_sizes/font_size = 24
-text = "
-
-
-Quest: Retrieve a Silver Egg
-
-
-
-
-
-
-
-Rarity: Mythical
-Mana Cost: 500
-Success Rate: 78%
-
-
-
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer3/Overlay2/ColorRect/CenterContainer/HBoxContainer/Panel4/VBoxContainer/Label" unique_id=1103285417]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.25, 0.25)
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(220, 700)
-texture = ExtResource("17_feobv")
+[connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]
