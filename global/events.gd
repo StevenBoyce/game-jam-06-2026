@@ -7,3 +7,4 @@ signal pets_changed()
 signal overlay_icon_clicked(view_name: String)
 signal overlay_closed()
 signal mission_selected
+signal missions_refreshed()

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dj4mwxhcbpmd3" path="res://scenes/main_game/main_game.gd" id="1_yra6k"]
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://ckuf3t8tbpdi0" path="res://scenes/main_game/canvas_layer_2.tscn" id="2_r8wn4"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
 [ext_resource type="Texture2D" uid="uid://ba40thx838ocf" path="res://assets/foregrass2.png" id="3_b4n6q"]
 [ext_resource type="Texture2D" uid="uid://wesgw1i6ptke" path="res://assets/clouds3.png" id="4_4y18v"]
 [ext_resource type="Script" uid="uid://b2xii2e87jo4w" path="res://scenes/battle/sprite_2d.gd" id="5_irrf2"]
 [ext_resource type="Texture2D" uid="uid://cg07knoye86lv" path="res://assets/UI/Mana.png" id="6_6eclk"]
 [ext_resource type="Texture2D" uid="uid://q0upicfr3phh" path="res://assets/UI/Mission.png" id="6_mijjq"]
-[ext_resource type="Texture2D" uid="uid://c23g1embtpn8i" path="res://assets/scene/egg.png" id="7_gxjft"]
 [ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
 [ext_resource type="Script" uid="uid://cwfbaqsb0q0yr" path="res://scenes/ui/clickable_icon/clickable_icon.gd" id="7_r81kp"]
 [ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
@@ -19,13 +19,8 @@
 [ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
 [ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="12_gl27v"]
 [ext_resource type="AudioStream" uid="uid://b7d4bqhdpeoom" path="res://assets/sound/rain.mp3" id="15_irrf2"]
-[ext_resource type="Texture2D" uid="uid://d3skb31ib1lrx" path="res://assets/cards/items/egg.png" id="17_feobv"]
-[ext_resource type="FontFile" uid="uid://n7s4w4sn5bsh" path="res://assets/fonts/Dead Font Walking.otf" id="18_l774p"]
-[ext_resource type="Script" uid="uid://3f2la7np2yek" path="res://scenes/main_game/menu_button.gd" id="19_r8wn4"]
-[ext_resource type="Script" uid="uid://d1lgsglpjyxki" path="res://scenes/main_game/menu_button_3.gd" id="20_feobv"]
-[ext_resource type="AudioStream" uid="uid://brmesycq3yws5" path="res://assets/sound/sfx/hover.mp3" id="20_kwr1i"]
-[ext_resource type="AudioStream" uid="uid://8rexyfk3p8ow" path="res://assets/sound/sfx/click.mp3" id="21_fxa2l"]
-[ext_resource type="Script" uid="uid://nnbmf4tadhxm" path="res://scenes/main_game/texture_button.gd" id="25_qspar"]
+[ext_resource type="AudioStream" uid="uid://brmesycq3yws5" path="res://assets/sound/sfx/hover.mp3" id="20_fxa2l"]
+[ext_resource type="AudioStream" uid="uid://8rexyfk3p8ow" path="res://assets/sound/sfx/click.mp3" id="21_feobv"]
 
 [sub_resource type="Gradient" id="Gradient_b4n6q"]
 
@@ -43,76 +38,10 @@ gravity = Vector3(-200, 1198, 0)
 scale_max = 1.1
 color_initial_ramp = SubResource("GradientTexture1D_gl27v")
 
-[sub_resource type="GDScript" id="GDScript_7vrkn"]
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	GameState.mana_changed.connect(_on_mana_changed)
-	text = str(GameState.mana)  # show correct value immediately on load
-
-func _on_mana_changed(new_value: int) -> void:
-	text = str(new_value)
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxa2l"]
-bg_color = Color(0.68069935, 0.7839609, 0.56224704, 0.84313726)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aa0p"]
-bg_color = Color(0.68069935, 0.7839609, 0.56224704, 0.84313726)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="Curve" id="Curve_ebk6p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.85113275, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_qtaex"]
-curve = SubResource("Curve_ebk6p")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2aa0p"]
-lifetime_randomness = 0.32
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(800, 1, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, -98, 0)
-radial_accel_min = -30.070002
-radial_accel_max = 35.659996
-tangential_accel_min = 20.219997
-tangential_accel_max = 23.019997
-scale_min = 6.0
-scale_max = 12.0
-scale_curve = SubResource("CurveTexture_qtaex")
-color = Color(1, 0, 0, 1)
-
-[sub_resource type="GDScript" id="GDScript_uddg2"]
-script/source = "
-extends Control
-
-@onready var overlay2: Control = %Overlay2
-
-func _ready() -> void:
-	Events.overlay_icon_clicked.connect(_on_overlay_icon_clicked)
-
-func _on_overlay_icon_clicked(view_name: String) -> void:
-	if view_name == \"pets\":
-		overlay2.visible = true
-"
-
 [node name="MainGame" type="Node2D" unique_id=438888407]
 script = ExtResource("1_yra6k")
+
+[node name="CanvasLayer2" parent="." unique_id=183741304 instance=ExtResource("2_r8wn4")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=743078342]
 z_index = 1
@@ -198,46 +127,77 @@ expand_mode = 2
 
 [node name="Overlay" type="Control" parent="CanvasLayer" unique_id=342003157]
 unique_name_in_owner = true
-visible = false
-modulate = Color(0.933207, 0.933207, 0.9332069, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = 74.0
-offset_right = -71.0
-offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_gl27v")
 
-[node name="MissionSelection" parent="CanvasLayer/Overlay" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
-unique_name_in_owner = true
+[node name="PetMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=1321121849]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay" unique_id=1053140515]
+[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay/PetMarginContainer" unique_id=1053140515]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+columns = 3
 script = ExtResource("12_gl27v")
 metadata/_custom_type_script = "uid://cob3f1vka25ic"
 
-[node name="CloseButton" type="Label" parent="CanvasLayer/Overlay" unique_id=342977575]
+[node name="MissionSelectMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=1469588179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MissionSelection" parent="CanvasLayer/Overlay/MissionSelectMarginContainer" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
 unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CloseMarginContainer" type="MarginContainer" parent="CanvasLayer/Overlay" unique_id=472701747]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -100.0
+offset_bottom = 81.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "X"
+mouse_filter = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Overlay/CloseMarginContainer" unique_id=773537431]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1847961580]
 stream = ExtResource("15_irrf2")
 autoplay = true
 
-[connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]
+[node name="hoversfx" type="AudioStreamPlayer" parent="." unique_id=1084492340]
+unique_name_in_owner = true
+stream = ExtResource("20_fxa2l")
+
+[node name="clicksfx" type="AudioStreamPlayer" parent="." unique_id=1236694168]
+unique_name_in_owner = true
+stream = ExtResource("21_feobv")
+
+[connection signal="pressed" from="CanvasLayer/Overlay/CloseMarginContainer/CloseButton" to="CanvasLayer/Overlay" method="_on_close_pressed"]

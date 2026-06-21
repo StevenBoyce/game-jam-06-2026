@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://ckuf3t8tbpdi0"]
+
+[ext_resource type="FontFile" uid="uid://n7s4w4sn5bsh" path="res://assets/fonts/Dead Font Walking.otf" id="1_fftid"]
+[ext_resource type="Script" uid="uid://3f2la7np2yek" path="res://scenes/main_game/menu_button.gd" id="2_w3dn7"]
+[ext_resource type="Script" uid="uid://d1lgsglpjyxki" path="res://scenes/main_game/menu_button_3.gd" id="3_17nm7"]
+
+[sub_resource type="Curve" id="Curve_ebk6p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.85113275, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qtaex"]
+curve = SubResource("Curve_ebk6p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2aa0p"]
+lifetime_randomness = 0.32
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(800, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -98, 0)
+radial_accel_min = -30.070002
+radial_accel_max = 35.659996
+tangential_accel_min = 20.219997
+tangential_accel_max = 23.019997
+scale_min = 6.0
+scale_max = 12.0
+scale_curve = SubResource("CurveTexture_qtaex")
+color = Color(1, 0, 0, 1)
+
+[node name="CanvasLayer2" type="CanvasLayer" unique_id=183741304]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1614517693]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78039217)
+
+[node name="Control" type="Control" parent="ColorRect" unique_id=1906257689]
+self_modulate = Color(0.17785347, 0.17785347, 0.17785347, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/Control" unique_id=171773319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="ColorRect/Control/CenterContainer" unique_id=1457321156]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/Control/CenterContainer/CenterContainer2" unique_id=2009472025]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fftid")
+theme_override_font_sizes/font_size = 40
+text = "where am I ... "
+
+[node name="Label2" type="Label" parent="ColorRect/Control/CenterContainer/CenterContainer2" unique_id=20748980]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fftid")
+theme_override_font_sizes/font_size = 40
+text = "...am I a tree..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Control/CenterContainer" unique_id=2096984713]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/Control/CenterContainer/VBoxContainer" unique_id=406020642]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.06666667, 1)
+theme_override_fonts/font = ExtResource("1_fftid")
+theme_override_font_sizes/font_size = 50
+text = "Cult Of The Tree"
+
+[node name="MenuButton" type="Button" parent="ColorRect/Control/CenterContainer/VBoxContainer" unique_id=164016989]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fftid")
+theme_override_font_sizes/font_size = 24
+text = "START GAME"
+script = ExtResource("2_w3dn7")
+
+[node name="MenuButton3" type="Button" parent="ColorRect/Control/CenterContainer/VBoxContainer" unique_id=1804644244]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fftid")
+theme_override_font_sizes/font_size = 24
+text = "CREDITS"
+script = ExtResource("3_17nm7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1375349596]
+position = Vector2(584, 718)
+amount = 50
+lifetime = 3.0599999999999996
+trail_enabled = true
+trail_lifetime = 0.08
+process_material = SubResource("ParticleProcessMaterial_2aa0p")

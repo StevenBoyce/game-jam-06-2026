@@ -7,7 +7,7 @@ const MISSION_CARD_SCENE := preload("res://scenes/ui/mission_selection/mission_c
 
 func _ready() -> void:
 	_build_mission_cards()
-	Events.mission_selected.connect(_on_mission_selected)
+	Events.missions_refreshed.connect(_build_mission_cards)
 
 func _build_mission_cards() -> void:
 	for child in card_container.get_children():
@@ -16,6 +16,3 @@ func _build_mission_cards() -> void:
 		var card := MISSION_CARD_SCENE.instantiate() as MissionCard
 		card_container.add_child(card)
 		card.setup(mission)
-
-func _on_mission_selected() -> void:
-	hide()
