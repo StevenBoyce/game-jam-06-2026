@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dj4mwxhcbpmd3" path="res://scenes/main_game/main_game.gd" id="1_yra6k"]
 [ext_resource type="PackedScene" uid="uid://6dm4inigf0u0" path="res://scenes/tree/player_tree.tscn" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://ksp3b1hiwxc1" path="res://assets/background.png" id="2_rvslj"]
-[ext_resource type="PackedScene" uid="uid://bbewx5wj6j67d" path="res://scenes/ui/pet_grid/pet_grid.tscn" id="4_fetp2"]
 [ext_resource type="Texture2D" uid="uid://cg07knoye86lv" path="res://assets/UI/Mana.png" id="6_6eclk"]
 [ext_resource type="Texture2D" uid="uid://q0upicfr3phh" path="res://assets/UI/Mission.png" id="6_mijjq"]
 [ext_resource type="Texture2D" uid="uid://cocsqaq7eea3o" path="res://assets/UI/Pets.png" id="7_ldk84"]
@@ -11,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://v27v0sgw20cc" path="res://assets/UI/Mission_highlighted.png" id="8_fetp2"]
 [ext_resource type="Texture2D" uid="uid://bjeqagisj8o5t" path="res://assets/UI/Settings.png" id="8_r81kp"]
 [ext_resource type="Texture2D" uid="uid://elmae8dlhwie" path="res://assets/UI/Pets_highlighted.png" id="10_b4n6q"]
+[ext_resource type="PackedScene" uid="uid://chulyf8e0cqc7" path="res://scenes/ui/mission_selection/mission_selection.tscn" id="11_b4n6q"]
+[ext_resource type="Script" uid="uid://b8ms64f6cpv5r" path="res://scenes/main_game/overlay.gd" id="11_gl27v"]
+[ext_resource type="Script" uid="uid://cob3f1vka25ic" path="res://scenes/ui/pet_grid/pet_grid.gd" id="12_gl27v"]
 
 [sub_resource type="Gradient" id="Gradient_8ywsm"]
 
@@ -51,25 +53,6 @@ process_material = SubResource("ParticleProcessMaterial_6eclk")
 position = Vector2(49, 114)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656295223]
-
-[node name="RightSide" type="VBoxContainer" parent="CanvasLayer" unique_id=1578267630]
-visible = false
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -24.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="PetFoldableContainer" type="FoldableContainer" parent="CanvasLayer/RightSide" unique_id=319208573]
-layout_mode = 2
-title = "Pets"
-title_alignment = 1
-
-[node name="PetGrid" parent="CanvasLayer/RightSide/PetFoldableContainer" unique_id=1626822078 instance=ExtResource("4_fetp2")]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="TopBar" type="HBoxContainer" parent="CanvasLayer" unique_id=573670683]
 anchors_preset = 10
@@ -127,5 +110,36 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 74.0
+offset_right = -71.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_gl27v")
+
+[node name="MissionSelection" parent="CanvasLayer/Overlay" unique_id=1692064567 instance=ExtResource("11_b4n6q")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="PetGrid" type="GridContainer" parent="CanvasLayer/Overlay" unique_id=1053140515]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_gl27v")
+metadata/_custom_type_script = "uid://cob3f1vka25ic"
+
+[node name="CloseButton" type="Label" parent="CanvasLayer/Overlay" unique_id=342977575]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "X"
+
+[connection signal="gui_input" from="CanvasLayer/Overlay/CloseButton" to="CanvasLayer/Overlay" method="_on_close_button_gui_input"]

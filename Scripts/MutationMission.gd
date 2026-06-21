@@ -2,13 +2,16 @@ class_name MutationMission
 extends Resource
 
 enum RewardType {
-	PET_HEALTH_PERCENT,    # increase pet max health by reward_value%
-	SUCCESS_RATE_BUFF,     # grants the one-time mission success buff
-	PET_ACQUISITION_RATE,  # increase pet acquisition rate by reward_value
-	MAX_MANA,              # increase max mana by reward_value
-	PET_HEALING_RATE,      # increase passive pet healing rate by reward_value
-	MANA_REWARD_PERCENT,   # increase mana rewards by reward_value%
-	BONUS_PET_CHANCE,      # reward_value% chance to bring home a new pet
+	# PET_HEALTH_PERCENT,    # increase pet max health by reward_value%
+	# SUCCESS_RATE_BUFF,     # grants the one-time mission success buff
+	# PET_ACQUISITION_RATE,  # increase pet acquisition rate by reward_value
+	# MAX_MANA,              # increase max mana by reward_value
+	# PET_HEALING_RATE,      # increase passive pet healing rate by reward_value
+	# MANA_REWARD_PERCENT,   # increase mana rewards by reward_value%
+	# BONUS_PET_CHANCE,      # reward_value% chance to bring home a new pet
+	PET_RARITY_CHANCE,     # reward_value% chance to bring home a pet of rarity reward_value
+	PET_MUTATION,
+	GAIN_MANA,
 }
 
 @export var title: String = ""
@@ -19,10 +22,12 @@ enum RewardType {
 @export var health_loss_max: float = 20.0
 @export var mana_reward: int = 50
 @export_enum("25", "50", "75", "100") var success_rate: int = 50
-@export var reward_type: RewardType = RewardType.MAX_MANA
+@export var reward_type: RewardType = RewardType.GAIN_MANA
 @export var reward_value: float = 0.0
 @export var unlocks_mutation: TreeMutation = null
 @export var duration: float = 20.0
+@export var card_border: Texture2D
+@export var item_image: Texture2D
 
 func get_random_health_loss() -> float:
 	return randf_range(health_loss_min, health_loss_max)

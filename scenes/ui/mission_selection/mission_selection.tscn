@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://chulyf8e0cqc7"]
 
 [ext_resource type="Script" uid="uid://bfuymdj7wxook" path="res://scenes/ui/mission_selection/mission_selection.gd" id="1_lwyi0"]
-[ext_resource type="Script" uid="uid://rkxkvyemjwwb" path="res://scenes/ui/mission_selection/mission_card/mission_card.gd" id="2_0hdpj"]
-[ext_resource type="Texture2D" uid="uid://bt8mllcythkoh" path="res://assets/cards/Necromancer_bronze.png" id="2_g6ydg"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjex5"]
-texture = ExtResource("2_g6ydg")
 
 [node name="MissionSelection" type="Control" unique_id=1220357618]
 layout_mode = 3
@@ -22,29 +17,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -50.0
-offset_bottom = 50.0
+offset_top = -200.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 1
-
-[node name="MissionCard" type="PanelContainer" parent="HBoxContainer" unique_id=441516310]
-custom_minimum_size = Vector2(170, 400)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_gjex5")
-script = ExtResource("2_0hdpj")
-metadata/_custom_type_script = "uid://rkxkvyemjwwb"
-
-[node name="MissionCard4" type="PanelContainer" parent="HBoxContainer" unique_id=429709711]
-custom_minimum_size = Vector2(150, 400)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_gjex5")
-script = ExtResource("2_0hdpj")
-metadata/_custom_type_script = "uid://rkxkvyemjwwb"
-
-[node name="MissionCard5" type="PanelContainer" parent="HBoxContainer" unique_id=1398868039]
-custom_minimum_size = Vector2(150, 400)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_gjex5")
-script = ExtResource("2_0hdpj")
-metadata/_custom_type_script = "uid://rkxkvyemjwwb"
